@@ -1,10 +1,15 @@
-package src;
+package src.main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPresssed, rightPressed;
+    GamePanel gp;
+
+    public KeyHandler(GamePanel gp){
+        this.gp = gp;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -16,13 +21,24 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
             this.upPressed = true;
-        } else if (code == KeyEvent.VK_S) {
+        }
+        if (code == KeyEvent.VK_S) {
             this.downPressed = true;
-        } else if (code == KeyEvent.VK_A) {
+        }
+        if (code == KeyEvent.VK_A) {
             this.leftPresssed = true;
-        } else if (code == KeyEvent.VK_D) {
+        }
+        if (code == KeyEvent.VK_D) {
             this.rightPressed = true;
         }
+        if (code == KeyEvent.VK_ESCAPE) {
+            if(gp.gameState == gp.pauseState)
+                gp.gameState = gp.playState;
+            else if(gp.gameState == gp.playState){
+                gp.gameState = gp.pauseState;
+            }
+        }
+
     }
 
     @Override

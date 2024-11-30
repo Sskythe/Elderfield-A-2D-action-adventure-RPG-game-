@@ -1,4 +1,4 @@
-package src;
+package src.main;
 
 import javax.swing.JFrame;
 
@@ -13,6 +13,7 @@ public class main extends JFrame {
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setVisible(true);
+        newGamePanel.setItems();
         newGamePanel.startGameThread(); 
 
     }
